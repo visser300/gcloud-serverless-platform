@@ -1,0 +1,21 @@
+steps:
+steps:
+  - name: node
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        npm install && npm test && npm run build
+
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    args:
+      - gcloud
+      - functions
+      - deploy
+      - hello-world
+      - --gen2
+      - --runtime=nodejs18
+      - --trigger-http
+      - --allow-unauthenticated
+      - --region=australia-southeast1
+      - --entry-point=helloWorld
