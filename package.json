@@ -6,7 +6,6 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "npx tsc-watch --onSuccess 'npx @google-cloud/functions-framework --target=helloWorld'",
-    "deploy": "gcloud functions deploy ts-template --gen2 --runtime=nodejs18 --trigger-http --allow-unauthenticated --region australia-southeast1 --entry-point=helloWorld",
     "build": "npx tsc",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc --reporter=lcov mocha -r ts-node/register 'tests/**/*.ts'"
   },
