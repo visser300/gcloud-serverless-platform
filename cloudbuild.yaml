@@ -18,4 +18,4 @@ steps:
       - --trigger-http
       - --allow-unauthenticated
       - --region=australia-southeast1
-      - --entry-point=helloWorld
+      - --entry-point=backendFunction

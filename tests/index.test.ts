@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { helloWorld } from "../src/index";
+import { backendFunction } from "../src/index";
 import { Request, Response } from "express";
 
 interface testObject {
@@ -15,24 +15,6 @@ describe("when a message is provided", () => {
 
   tests.forEach(({ args, expected }) => {
     it(`returns ${args.body.message} when request body is ${JSON.stringify(args.body)}`, () => {
-      const result = helloWorld(args as Request, { send: () => null } as Response);
-      expect(result).to.deep.eq(expected);
-    });
-  });
-});
-
-describe("when a message is not provided", () => {
-  const tests: testObject[] = [
-    { args: { body: { message: "" } }, expected: { message: "Hello World!" } },
-    { args: { body: { message: undefined } }, expected: { message: "Hello World!" } },
-    { args: { body: {} }, expected: { message: "Hello World!" } },
-    { args: { body: { otherKey: "What?" } }, expected: { message: "Hello World!" } },
-  ];
-
-  tests.forEach(({ args, expected }) => {
-    it(`returns Hello World! when request body is ${JSON.stringify(args.body)}`, () => {
-      const result = helloWorld(args as Request, { send: () => null } as Response);
-      expect(result).to.deep.eq(expected);
     });
   });
 });

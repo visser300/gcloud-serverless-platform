@@ -2,21 +2,29 @@
   "name": "ts-template",
   "version": "1.2.1",
   "description": "Serverless platform with high frequency loading",
-  "repository": "jgunnink/typescript-cloud-function-template",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "engines": {
+    "node": "16"
+  },
   "scripts": {
-    "start": "npx tsc-watch --onSuccess 'npx @google-cloud/functions-framework --target=helloWorld'",
-    "emulators": "firebase emulators:start --only functions",
+    "start": "npx tsc-watch --onSuccess 'npx @google-cloud/functions-framework --target=backendFunction'",
+    "emulators": "firebase emulators:start --only firestore,functions,auth --inspect-functions",
     "build": "npx tsc",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc --reporter=lcov mocha -r ts-node/register 'tests/**/*.ts'"
   },
-  "author": "JK Gunnink",
+  "author": "Quang Nguyen",
   "license": "MIT",
   "dependencies": {
     "@google-cloud/functions-framework": "^3.1.3",
     "typescript": "^5.0.2",
+    "express": "4.18.2",
+    "nocache": "3.0.4",
+    "nookies": "2.5.2",
+    "class-validator": "0.14.0",
+    "express-openapi-validate": "0.6.1",
     "firebase-admin": "11.5.0",
-    "firebase-functions": "3.24.1"
+    "firebase-functions": "3.24.1",
+    "fireorm": "0.23.3"
   },
   "devDependencies": {
     "@types/chai": "^4.3.4",
@@ -24,8 +32,6 @@
     "@types/mocha": "^10.0.0",
     "@types/node": "^18.15.3",
     "chai": "^4.3.7",
-    "class-validator": "0.14.0",
-    "fireorm": "0.23.3",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "ts-node": "^10.9.1",
