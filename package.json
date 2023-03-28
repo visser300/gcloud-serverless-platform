@@ -1,11 +1,12 @@
 {
   "name": "ts-template",
   "version": "1.2.1",
-  "description": "A typescript function which is a template for building cloud functions on GCP quickly.",
+  "description": "Serverless platform with high frequency loading",
   "repository": "jgunnink/typescript-cloud-function-template",
   "main": "dist/index.js",
   "scripts": {
     "start": "npx tsc-watch --onSuccess 'npx @google-cloud/functions-framework --target=helloWorld'",
+    "emulators": "firebase emulators:start --only functions",
     "build": "npx tsc",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc --reporter=lcov mocha -r ts-node/register 'tests/**/*.ts'"
   },
@@ -13,7 +14,9 @@
   "license": "MIT",
   "dependencies": {
     "@google-cloud/functions-framework": "^3.1.3",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.2",
+    "firebase-admin": "11.5.0",
+    "firebase-functions": "3.24.1"
   },
   "devDependencies": {
     "@types/chai": "^4.3.4",
@@ -21,11 +24,12 @@
     "@types/mocha": "^10.0.0",
     "@types/node": "^18.15.3",
     "chai": "^4.3.7",
-    "firebase-admin": "11.5.0",
-    "firebase-functions": "3.24.1",
+    "class-validator": "0.14.0",
+    "fireorm": "0.23.3",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "ts-node": "^10.9.1",
-    "tsc-watch": "^6.0.0"
+    "tsc-watch": "^6.0.0",
+    "firebase-functions-test": "^0.2.0"
   }
 }

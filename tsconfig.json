@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "experimentalDecorators": true,
     "outDir": "dist"
   },
   "include": ["src/**/*.ts"],
